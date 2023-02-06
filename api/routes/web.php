@@ -14,11 +14,13 @@
 $router->group(["prefix" => "auth"], function () use ($router) {
     $router->post("/register", "UserController@register");
     $router->post("/verifyUser", "AuthController@verifyUser");
-    $router->post("/verifyPassword/{user}", "AuthController@verifyPassword");
+    $router->post("/verifyPassword", "AuthController@verifyPassword");
+    $router->post('/sendValidCodePass', 'AuthMailController@sendValidCodePass');
 });
 
 $router->group(["middleware" => "auth"], function () use ($router) {
     $router->get("/", "TokenController@index");
+    
 
     /**
      * User routes
@@ -30,35 +32,4 @@ $router->group(["middleware" => "auth"], function () use ($router) {
         $router->get("/find/{user}", "UserController@find");
         $router->put("/resetPassword", "AuthController@resetPassword");
     });
-
-    /**
-     * Company routes
-     */
-    $router->group(["prefix" => "company"], function () use ($router) {
-        $router->post("/create", "CompanyController@create");
-        $router->delete("/delete", "CompanyController@delete");
-        $router->get("/find/{company}", "CompanyController@find");
-        $router->put("/edit", "CompanyController@edit");
-    });
-
-    /**
-     * People routes
-     */
-    $router->group(["prefix" => "people"], function () use ($router) {
-        $router->post("/create", "PeopleController@create");
-        $router->delete("/delete", "PeopleController@delete");
-        $router->get("/find/{peopleOrUser}", "PeopleController@find");
-        $router->put("/edit", "PeopleController@edit");
-    });
-
-    /**
-     * Position routes
-     */
-    $router->group(["prefix" => "position"], function () use ($router) {
-        $router->post("/create", "UserController@create");
-        $router->delete("/delete", "UserController@delete");
-        $router->get("/find/{position}", "UserController@find");
-        $router->put("/edit", "UserController@edit");
-    }
-    );
 });

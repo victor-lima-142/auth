@@ -14,7 +14,7 @@ class UserController extends Controller
     public function register(Request $request): JsonResponse
     {
         try {
-            $checkRequest = self::checkRequest(["username", "email", "password", "level", "name", "birthday"], $request);
+            $checkRequest = self::checkRequest(["username", "email", "password"], $request);
             if ($checkRequest !== true) {
                 return $checkRequest;
             }
@@ -26,7 +26,7 @@ class UserController extends Controller
                 "username" => $request->username,
                 "email" => $request->email,
                 "password" => Hash::make($request->password),
-                "level" => $request->level,
+                "level" => !$request->level ? 0 : $request->level,
                 "logged" => $request->isLogged ? true : false,
             ]);
             if ($user->save()) {
@@ -36,16 +36,12 @@ class UserController extends Controller
                     return response()->json(["message" => "Token didn't created. Try register again."], 500);
                 }
             }
-            $data = ["name" => $request->name, "birthday" => $request->birthday, "user_id" => $user->id];
-            $people = new People($data);
-            $people->save();
             return response()->json(
                 [
                     "user" => $user->id,
                     "token" => $token->token,
                     "email" => $user->email,
-                    "username" => $user->username,
-                    "people" => $people->id
+                    "username" => $user->username
                 ],
                 200
             );

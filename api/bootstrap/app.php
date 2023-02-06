@@ -47,6 +47,8 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
+$app->configure('mail');
+
 /*
 |--------------------------------------------------------------------------
 | Register Config Files
@@ -92,6 +94,7 @@ $app->routeMiddleware([
 
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(App\Providers\AppServiceProvider::class);
+$app->register(Illuminate\Mail\MailServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
@@ -105,6 +108,16 @@ $app->register(App\Providers\AppServiceProvider::class);
 | can respond to, as well as the controllers that may handle them.
 |
 */
+
+$app->configure('mail');
+
+$app->alias('mail.manager', Illuminate\Mail\MailManager::class);
+$app->alias('mail.manager', Illuminate\Contracts\Mail\Factory::class);
+
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
+
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',

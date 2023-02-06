@@ -21,7 +21,7 @@ class Auth
         }
 
         $user = $this->checkUser($user_id);
-
+        
         if (!$user) {
             return $this->renderMessage("User not found");
         }

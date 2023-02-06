@@ -9,6 +9,7 @@
         "dirape/token": "^2.3",
         "flipbox/lumen-generator": "^9.1",
         "guzzlehttp/guzzle": "^7.5",
+        "illuminate/mail": "^9.50",
         "laravel/lumen-framework": "^9.0"
     },
     "require-dev": {

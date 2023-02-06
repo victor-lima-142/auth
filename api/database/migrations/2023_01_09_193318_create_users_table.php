@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('username', 30)->unique();
             $table->string('email', 50)->unique();
             $table->string('password', 180);
-            $table->integer('level');
+            $table->integer('level')->nullable();
             $table->boolean('logged')->default(0);
             $table->softDeletes();
             $table->timestamps();

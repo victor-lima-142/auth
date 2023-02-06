@@ -33,7 +33,10 @@ class AuthController extends Controller
                 $token = TokenController::createToken($user);
             if (!$token)
                 return response()->json(["message" => "token not created"], 500);
-            return response()->json(["user" => $request->user, "token" => $token->token], 200);
+            $user->logged = true;
+            if ($user->save())
+                return response()->json(["user" => $request->user, "token" => $token->token], 200);
+            return response()->json(["message" => "User couldn't be logged"], 500);
         } catch (\Exception $e) {
             return response()->json(["message" => "Internal server Error:" . $e->getMessage()], 500);
         }

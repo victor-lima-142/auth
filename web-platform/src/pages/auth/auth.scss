@@ -1,0 +1,46 @@
+.form-auth {
+    border-radius: 25px;
+    @media screen and (max-width: 768px) {
+        max-width: 93%;
+    }
+    @media screen and (min-width: 769px) {
+        max-width: 25%;
+    }
+    margin: 50px auto 0px auto;
+    text-align: center;
+    padding: 20px 0px;
+    background: #FFF;
+    // background: var(--bs-gray-300);
+    > * {
+        margin: 0px;
+        padding: 0px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    form {
+        input, .form-group {
+            width: 80%;
+            margin: 20px auto;
+            @media screen and (max-width: 768px) {
+                width: 90%;
+            }
+        }
+        .form-group {
+            gap: 15px;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+        span {
+            transition-duration: 1s;
+            cursor: pointer;
+        }
+        span:hover {
+            color: #0000009d;
+        }
+    }
+}
