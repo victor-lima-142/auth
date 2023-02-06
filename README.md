@@ -6,9 +6,9 @@
 > The version of PHP used is >8.x.
 > 
 > The structure of the API project is based on 4 tables:
-> - users (model user)
-> - token (token template)
-> - code_users (CodeUser Template)
+> - users (model User)
+> - token (model Template)
+> - code_users (model CodeUser)
 > ##### It is important to note that all tables use the soft delete system and also the timestamp provided by Lumen/Laravel tools. (PHP language)
 
 ### About Users:
