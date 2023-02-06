@@ -33,8 +33,8 @@ class User extends Model
         return $this->hasOne('Token', 'user_id', 'id');
     }
 
-    public function people() {
-        return $this->hasOne('People', 'user_id', 'id');
+    public function codeUser() {
+        return $this->hasOne('CodeUser', 'user_id', 'id');
     }
 
     static public function validateUser(int $id): bool {
