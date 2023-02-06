@@ -1,5 +1,5 @@
 # Authentication API documentation
-[![Latest Stable Version](../version.svg)]
+![Latest Stable Version](../version.svg)
 
 ## About tables and database environment
 > The Database Management System used is MySQL.
