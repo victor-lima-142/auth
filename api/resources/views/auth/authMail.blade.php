@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{ $testMailData['title'] }}</h1>
-    <span>{{ $testMailData['body'] }}</span>
+    <h1>{{ $content['title'] }}</h1>
+    <span>{{ $content['body'] }}</span>
 </body>
 </html>

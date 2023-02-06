@@ -6,12 +6,11 @@ import { clearStorage, getItem } from "../../../config/storage";
 
 const MyNavbar = (props: any): JSX.Element => {
     const expand = "lg";
-    const { navigate, logged, _setLogged, location } = props;
-
+    const { navigate, _setLogged, logged, location } = props;
+    
     const logout = async () => {
-        const userData = getItem('userData');
         const authRequest = new AuthRequests();
-        const res = await authRequest.logout({ user: userData.user, token: userData.token });
+        const res = await authRequest.logout();
         if (res?.status !== 200) {
             console.log(res);
             return;

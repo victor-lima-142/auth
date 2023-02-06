@@ -26,7 +26,7 @@ export const getItem = (key: string) => {
         if (key) {
             const value = sessionStorage.getItem(key) || '';
             if (value)
-                return JSON.parse(value)?.data;
+                return JSON.parse(value);
             return '';
         };
         return '';

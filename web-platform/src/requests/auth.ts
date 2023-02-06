@@ -24,6 +24,17 @@ class AuthRequests extends Requests {
 
     async sendValidCodePass(body?: any) {
         await this.post(endpoints.auth.sendValidCodePass, body);
+        return this.res;
+    }
+
+    async checkCodePass(body?: any) {
+        await this.post(endpoints.auth.checkCode, body);
+        return this.res;
+    }
+
+    async resetForgotPassword(body?: any) {
+        await this.post(endpoints.auth.resetForgotPassword, body);
+        return this.res;
     }
 }
 

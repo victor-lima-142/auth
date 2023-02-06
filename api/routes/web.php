@@ -16,6 +16,8 @@ $router->group(["prefix" => "auth"], function () use ($router) {
     $router->post("/verifyUser", "AuthController@verifyUser");
     $router->post("/verifyPassword", "AuthController@verifyPassword");
     $router->post('/sendValidCodePass', 'AuthMailController@sendValidCodePass');
+    $router->post('/checkCode', 'AuthMailController@checkCode');
+    $router->post('/resetForgotPassword', 'AuthMailController@resetForgotPassword');
 });
 
 $router->group(["middleware" => "auth"], function () use ($router) {

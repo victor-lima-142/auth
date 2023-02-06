@@ -31,7 +31,7 @@ const Auth = (props: any): JSX.Element => {
             const resPass = await authRequests.verifyPassword({ user: resUser?.data?.user, password: password });
             if (resPass?.status !== 200) return;
 
-            setItem('userData', resPass);
+            setItem('userData', resPass?.data);
             _setLogged(true);
             navigate('/');
         } catch (e: any) {
@@ -64,7 +64,7 @@ const Auth = (props: any): JSX.Element => {
     return <Col className="shadow form-auth">
         {(authMode === 'login') && <Login {...props} {...{ _setAuthMode, username, _setUsername, password, _setPassword, login, setAuthMode }} />}
         {(authMode === 'register') && <Register {...props} {...{ _setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register }} />}
-        {(authMode === 'resetPassword') && <ResetPassword {...props} {...{ _setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register }} />}
+        {(authMode === 'resetPassword') && <ResetPassword {...props} {...{ setAuthMode, username, _setUsername, email, _setEmail, password, _setPassword, register }} />}
     </Col>
 }
 

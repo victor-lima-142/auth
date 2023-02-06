@@ -8,7 +8,9 @@ const endpoints = {
         find: '/auth/find',
         resetPassword: '/auth/resetPassword',
         delete: '/auth/delete',
-        sendValidCodePass: '/auth/sendValidCodePass'
+        sendValidCodePass: '/auth/sendValidCodePass',
+        checkCode: '/auth/checkCode',
+        resetForgotPassword: '/auth/resetForgotPassword'
     }
 }
 
